@@ -6,6 +6,10 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache
-)     
+)
+
+libraryDependencies += "ws.securesocial" %% "securesocial" % "2.1.3"
 
 play.Project.playJavaSettings
+
+
