@@ -76,23 +76,26 @@ public class SqlUserService extends BaseUserService {
             Logger.debug(String.format("finding by Id = %s", identityId.userId()));
 
         }
-        LocalUser localUser = LocalUser.findByEmail(identityId.userId());
-        if(localUser == null) return null;
-        SocialUser socialUser = new SocialUser(new IdentityId(localUser.id, localUser.provider),
-                localUser.firstName,
-                localUser.lastName,
-                String.format("%s %s", localUser.firstName, localUser.lastName),
-                Option.apply(localUser.email),
-                null,
-                new AuthenticationMethod("userPassword"),
-                null,
-                null,
-                Some.apply(new PasswordInfo("bcrypt", localUser.password, null))
-        );
-        if (Logger.isDebugEnabled()) {
-            Logger.debug(String.format("socialUser = %s", socialUser));
+        LocalUser localUser = LocalUser.findById(identityId.userId());
+        if(localUser == null){
+            return null;
+        }else{
+            SocialUser socialUser = new SocialUser(new IdentityId(localUser.id, localUser.provider),
+                    localUser.firstName,
+                    localUser.lastName,
+                    String.format("%s %s", localUser.firstName, localUser.lastName),
+                    Option.apply(localUser.email),
+                    null,
+                    new AuthenticationMethod("userPassword"),
+                    null,
+                    null,
+                    Some.apply(new PasswordInfo("bcrypt", localUser.password, null))
+            );
+            if (Logger.isDebugEnabled()) {
+                Logger.debug(String.format("socialUser = %s", socialUser));
+            }
+            return socialUser;
         }
-        return socialUser;
     }
 
 

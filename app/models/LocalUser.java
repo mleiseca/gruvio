@@ -25,7 +25,7 @@ public class LocalUser extends Model{
     /**
      * Retrieve a User using an email.
      */
-    public static LocalUser findByEmail(String email) {
-        return find.where().eq("email", email).findUnique();
+    public static LocalUser findById(String id) {
+        return find.where().eq("id", id).findUnique();
     }
 }
