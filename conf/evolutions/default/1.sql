@@ -3,6 +3,26 @@
 
 # --- !Ups
 
+create table groove (
+  id                        varchar(255) not null,
+  name                      varchar(255),
+  description               varchar(255),
+  verification_mechanism    varchar(255),
+  verification_frequency    varchar(255),
+  last_verification         datetime,
+  created_at                datetime,
+  local_user_id             varchar(255) not null,
+  constraint pk_groove primary key (id))
+;
+
+create table groove_verification_check (
+  id                        varchar(255) not null,
+  groove_id                 varchar(255),
+  checked_at                datetime,
+  check_was_successful      tinyint(1) default 0,
+  constraint pk_groove_verification_check primary key (id))
+;
+
 create table local_token (
   uuid                      varchar(255) not null,
   email                     varchar(255),
@@ -29,6 +49,10 @@ create table local_user (
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table groove;
+
+drop table groove_verification_check;
 
 drop table local_token;
 

@@ -1,0 +1,44 @@
+@(grooveForm: play.data.Form[models.Groove])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+    @*public String name;*@
+    @*public String description;*@
+
+    @*public String verificationMechanism;*@
+    @*public String verificationFrequency;*@
+    @*public Date lastVerification;*@
+
+    @*public Date createdAt;*@
+
+
+@main("blah blah") {
+    @helper.form(action = routes.Grooves.create) {
+
+        <fieldset>
+            <legend>Add a groove</legend>
+
+            @inputText(
+                grooveForm("name"),
+                '_label -> "Name",
+                '_help -> "Name your groove",
+                '_error -> grooveForm.globalError
+            )
+
+            @inputText(
+                grooveForm("description"),
+                '_label -> "What's it all about?",
+                '_help -> "Provide some more detail to your groove"
+            )
+
+
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Create">
+            <a href="@routes.Application.index()" class="btn">Cancel</a>
+        </div>
+    }
+
+}
