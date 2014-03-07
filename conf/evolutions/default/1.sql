@@ -7,6 +7,7 @@ create table groove (
   id                        varchar(255) not null,
   name                      varchar(255),
   description               varchar(255),
+  motivation                varchar(255),
   verification_mechanism    varchar(255),
   verification_frequency    varchar(255),
   last_verification         datetime,

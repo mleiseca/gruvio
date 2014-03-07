@@ -17,6 +17,7 @@ public class Groove extends Model {
     public String id;
     public String name;
     public String description;
+    public String motivation;
 
     public String verificationMechanism;
     public String verificationFrequency;

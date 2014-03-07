@@ -7,8 +7,8 @@ GET         /                              controllers.Application.index()
 
 GET         /dashboard                     controllers.Application.dashboard()
 
-GET         /grooves                       controllers.Grooves.blank()
-GET         /groove/new                    controllers.Grooves.create()
+GET         /user/grooves                  controllers.Grooves.blank()
+GET         /user/groove/new               controllers.Grooves.create()
 
 
 # Map static resources from the /public folder to the /assets URL path

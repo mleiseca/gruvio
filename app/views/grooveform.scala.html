@@ -26,11 +26,42 @@
                 '_error -> grooveForm.globalError
             )
 
-            @inputText(
+            @textarea(
                 grooveForm("description"),
-                '_label -> "What's it all about?",
-                '_help -> "Provide some more detail to your groove"
+                args = 'rows -> 3, 'cols -> 50,
+                '_label -> "I want to",
+                '_help -> ""
             )
+
+            @textarea(
+                grooveForm("motivation"),
+                args = 'rows -> 3, 'cols -> 50,
+                '_label -> "so that",
+                '_help -> "Why do you want to get in this groove?"
+            )
+        </fieldset>
+        <fieldset>
+            <legend>Check in</legend>
+
+            @inputRadioGroup(
+                grooveForm("verificationFrequency"),
+                options = Seq("DAY" -> "Day", "WEEK"->"Week"),
+                '_label -> "every",
+                '_help -> ""
+            )
+
+            <!--
+            @select(
+                grooveForm("verificationMechanism"),
+                options = Seq("Select a tool" -> "",
+                    "GITHUB" -> "GitHub",
+                    "JAWBONE"->"Jawbone" ,
+                    "MANUAL"->"I'll enter data myself"
+
+                ),
+                '_label -> "watch my progress on"
+
+            ) -->
 
 
         </fieldset>
@@ -39,6 +70,11 @@
             <input type="submit" class="btn primary" value="Create">
             <a href="@routes.Application.index()" class="btn">Cancel</a>
         </div>
-    }
 
+        <script>
+            $(function(){
+                $("#nav-addgroove").addClass("active");
+            })
+        </script>
+    }
 }
