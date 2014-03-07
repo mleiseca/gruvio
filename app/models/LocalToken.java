@@ -19,7 +19,7 @@ public class LocalToken extends Model {
     public Date createdAt;
     public Date expireAt;
     public boolean isSignUp;
-    public static Finder<String, LocalToken> find = new Finder<>(
+    public static Finder<String, LocalToken> find = new Finder<String, LocalToken>(
             String.class, LocalToken.class
     );
 }

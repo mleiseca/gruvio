@@ -19,7 +19,7 @@ public class LocalUser extends Model{
     public String firstName;
     public String lastName;
 
-    public static Finder<String, LocalUser> find = new Finder<> (String.class,LocalUser.class);
+    public static Finder<String, LocalUser> find = new Finder<String, LocalUser> (String.class,LocalUser.class);
 
 
     /**
