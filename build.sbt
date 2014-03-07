@@ -7,7 +7,7 @@ libraryDependencies ++= Seq(
   javaEbean,
   cache,
   "ws.securesocial" %% "securesocial" % "2.1.3",
-  "mysql" % "mysql-connector-java" % "5.1.26"
+  "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
 )
 
 play.Project.playJavaSettings
