@@ -10,8 +10,8 @@ create table groove (
   motivation                varchar(255),
   verification_mechanism    varchar(255),
   verification_frequency    varchar(255),
-  last_verification         datetime,
-  created_at                datetime,
+  last_verification         timestamp,
+  created_at                timestamp,
   local_user_id             varchar(255) not null,
   constraint pk_groove primary key (id))
 ;
@@ -19,17 +19,17 @@ create table groove (
 create table groove_verification_check (
   id                        varchar(255) not null,
   groove_id                 varchar(255),
-  checked_at                datetime,
-  check_was_successful      tinyint(1) default 0,
+  checked_at                timestamp,
+  check_was_successful      boolean,
   constraint pk_groove_verification_check primary key (id))
 ;
 
 create table local_token (
   uuid                      varchar(255) not null,
   email                     varchar(255),
-  created_at                datetime,
-  expire_at                 datetime,
-  is_sign_up                tinyint(1) default 0,
+  created_at                timestamp,
+  expire_at                 timestamp,
+  is_sign_up                boolean,
   constraint pk_local_token primary key (uuid))
 ;
 
@@ -44,20 +44,32 @@ create table local_user (
   constraint pk_local_user primary key (id))
 ;
 
+create sequence groove_seq;
+
+create sequence groove_verification_check_seq;
+
+create sequence local_token_seq;
+
+create sequence local_user_seq;
+
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+drop table if exists groove cascade;
 
-drop table groove;
+drop table if exists groove_verification_check cascade;
 
-drop table groove_verification_check;
+drop table if exists local_token cascade;
 
-drop table local_token;
+drop table if exists local_user cascade;
 
-drop table local_user;
+drop sequence if exists groove_seq;
 
-SET FOREIGN_KEY_CHECKS=1;
+drop sequence if exists groove_verification_check_seq;
+
+drop sequence if exists local_token_seq;
+
+drop sequence if exists local_user_seq;
 
